@@ -1,0 +1,82 @@
+[
+ {
+  "id": "L01",
+  "text": "It's two in the morning, and Mira's shop is wide awake.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L02",
+  "text": "She makes mugs by hand, and sells them online.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L03",
+  "text": "Which means she also answers every message, writes every listing, counts every mug, and packs every order.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L04",
+  "text": "One pair of hands. A hundred little jobs.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L05",
+  "text": "So Mira handed the busywork to AI.",
+  "voice": "af_heart",
+  "speed": 0.92,
+  "asr": "So Mira handed the busy work to AI."
+ },
+ {
+  "id": "L06",
+  "text": "Now, when someone asks if the blue mug is dishwasher safe, the answer is already there. Day or night.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L07",
+  "text": "She snaps a photo, adds a few words, and AI drafts the listing for her to check.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L08",
+  "text": "It spots which mugs are selling fast, and reminds her to order more clay before she runs out.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L09",
+  "text": "Each order sorts itself, labels print, and every customer knows where their parcel is.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L10",
+  "text": "AI doesn't make the mugs.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L11",
+  "text": "It gives Mira back the time to make them.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L12",
+  "text": "It's two in the morning. The shop is still open. And Mira is fast asleep.",
+  "voice": "af_heart",
+  "speed": 0.92
+ },
+ {
+  "id": "L13",
+  "text": "Pet-ross AI Tech Agency. Innovate smarter. Create beyond limits.",
+  "voice": "af_heart",
+  "speed": 0.92,
+  "asr": "Petros AI Tech Agency. Innovate smarter. Create beyond limits."
+ }
+]

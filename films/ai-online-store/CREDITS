@@ -1,0 +1,37 @@
+One Pair of Hands: third-party material in the film and its source
+====================================================================
+
+Client material
+- Petros AI-Tech Agency logo lockup (brand/petros_lockup_dark.svg; the other brand files in brand/ were used only for
+  reference), the brand colours (Deep Indigo #0B0F2A, Soft White #FAF6FF, Royal Purple #6A00FF, Neon Blue #00E5FF) and
+  the tagline "Innovate Smarter. Create Beyond Limits.": supplied by the client from their brand folder, used as supplied.
+
+Voice
+- Narration: synthetic voice, Kokoro-82M v1.0 text-to-speech by hexgrad, voice "af_heart", Apache License 2.0
+  (https://huggingface.co/hexgrad/Kokoro-82M); ONNX export by Taylor Chu, run with kokoro-onnx (MIT).
+- Speech check (not in the film): faster-whisper with the Whisper base.en model (MIT).
+
+Music: an original score written for this film (score.py)
+- Samples (CC0): FreePats project (freepats.zenvoid.org), VS Chamber Orchestra: Community Edition (Versilian Studios /
+  Sam Gossner), Versilian Community Sample Library (Versilian Studios).
+- Music box: physically modelled in code (no samples).
+
+Sound effects and ambience
+- All synthesized in code for this film (mix.py): paper, card, tab, page, stamp, printer, wheel, clock, crickets, purr.
+
+Pictures
+- Every drawing, character, set, mechanism and the real mug: drawn or modelled in code for this film.
+- Environment light "Lythwood Lounge" HDRI, Poly Haven, CC0 (https://polyhaven.com/a/lythwood_lounge).
+- "American Walnut Veneer" textures, Poly Haven, CC0 (https://polyhaven.com/a/american_walnut_veneer).
+
+Fonts (SIL Open Font License 1.1; licence texts in fonts/)
+- Fredoka: Copyright 2016 The Fredoka Project Authors.
+- Lilita One: Copyright (c) 2011 Juan Montoreano, Reserved Font Name "Lilita One".
+- IM Fell English: (c) 2007 Igino Marini, Reserved Font Name "IM FELL English".
+- Sora: Copyright 2019 The Sora Project Authors.
+- DM Sans: Copyright 2014 The DM Sans Project Authors.
+
+Code
+- three.js r170 (MIT) for 3D, rendered in headless Chromium.
+- book.js, paper.js, cutmesh.js, post.js and lib.js are adapted from the Paper Pop-up Book engine of the
+  Lemo-Opuscar library, under the MIT License: see LICENSE in this folder.
