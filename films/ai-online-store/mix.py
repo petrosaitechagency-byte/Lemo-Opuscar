@@ -67,7 +67,7 @@ def clack():
 
 sfx = np.zeros((N, 2)); amb = np.zeros((N, 2))
 G = dict(ping=.5, bubble=.35, blip=.55, card=.9, slip=.45, creak=.5, tabclick=1.0, foldall=.6, page=1.2, pop=.45, tab=.9, gear=.08, shutter=.8,
-         write=.25, stamp=.9, slats=.8, note=.5, belt=.12, label=.5, launch=.45, ding=.3, wheel=.15, clay=.35, disc=.4, purr=.35, close=.9, thump=1.2, beltstart=.4)
+         write=.08, stamp=.9, slats=.8, note=.5, belt=.12, label=.5, launch=.45, ding=.3, wheel=.15, clay=.35, disc=.4, purr=.35, close=.9, thump=1.0, beltstart=.4)
 for e in EV:
     t, ty = e['t'], e['type']; g = G.get(ty, .5)
     if ty == 'ping':
@@ -92,8 +92,8 @@ for e in EV:
     elif ty == 'shutter':
         put(sfx, t, st(clack() * 1.2, -.2), g); put(sfx, t + .07, st(clack() * .9, -.2), g)
         put(sfx, t + .02, st(bp(noise(int(.25 * SR)), 2000, 7000) * ex(tt(.25), .01, .06) * .3, -.2), g)
-    elif ty == 'write':
-        d = e['d']; tq = tt(d); sc = bp(noise(len(tq)), 2500, 7000) * (.5 + .5 * np.abs(np.sin(2 * np.pi * 7 * tq + np.sin(2 * np.pi * 1.3 * tq) * 2)))
+    elif ty == 'write':   # the pencil scratch starts once the word "drafts" has been said (it masked the word)
+        t, d = t + .8, e['d'] - .8; tq = tt(d); sc = bp(noise(len(tq)), 4500, 9500) * (.5 + .5 * np.abs(np.sin(2 * np.pi * 7 * tq + np.sin(2 * np.pi * 1.3 * tq) * 2)))   # high and soft: it plays under the word "drafts"
         put(sfx, t, st(sc * np.sin(np.pi * tq / d) ** .3, -.35), g)
     elif ty == 'stamp': put(sfx, t, verb(st(S_(thump(95, .4) * .9, tap(600, .1) * .8), -.3), .12), g)
     elif ty == 'slats':
@@ -137,7 +137,7 @@ for e in EV:
         put(sfx, t, verb(st(x, 0), .3), g); put(sfx, t, st(norm(creak(1.0), .3), 0), g * .6)
     elif ty == 'thump':
         x = S_(thump(62, 1.2), lp(noise(len(tt(1.2))), 900) * ex(tt(1.2), .004, .12) * .5)
-        put(sfx, t, verb(st(norm(x, .9), 0), .25), g)
+        put(sfx, t, verb(st(norm(x, .9), 0), .1), g)   # dry: its tail must not cover the sign-off
 
 # ---------- ambience beds ----------
 Tt = np.arange(N) / SR
@@ -186,13 +186,14 @@ music = music[:N]
 act = (np.abs(voice).max(1) > .01).astype(float)
 from scipy.ndimage import uniform_filter1d
 act = uniform_filter1d(uniform_filter1d(act, int(.3 * SR)), int(.3 * SR))   # smooth the speech envelope (≈ 300 ms attack/release)
-music *= (1 - .5 * np.clip(act * 1.6, 0, 1))[:, None]
+music *= (1 - .6 * np.clip(act * 1.6, 0, 1))[:, None]   # about −8 dB under speech
 mrms = rms_db(music[np.abs(music).max(1) > 1e-4])
 music *= 10 ** ((-27 - mrms) / 20)                  # ducked passages land ≈ 10–12 dB under the voice
 
 # ---------- sum, limit ----------
 sfx = np.stack([sfx[:, 0], sfx[:, 1]], 1)
-mix = voice + music + sfx * .5 + amb * .8
+duck = (1 - .35 * np.clip(act * 1.6, 0, 1))[:, None]          # foley and beds step back under the words
+mix = voice + music + sfx * .5 * duck + amb * .8 * duck
 for c in range(2):
     m = mix[:, c]; over = np.abs(m) > .95; m[over] = np.sign(m[over]) * (.95 + np.tanh((np.abs(m[over]) - .95) * 5) * .04)
 mix = mix / max(1e-9, np.abs(mix).max()) * .89
